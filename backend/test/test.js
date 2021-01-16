@@ -3,7 +3,7 @@ let chaiHttp = require('chai-http');
 const expect = require('chai').expect;
 
 chai.use(chaiHttp);
-const url = 'http://localhost:5000';
+const url = 'http://localhost:4000';
 
 // Testeando api rest: registrar usuario
 describe('/ POST /api/users/register', () => {

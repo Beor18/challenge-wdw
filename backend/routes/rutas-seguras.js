@@ -10,12 +10,13 @@ router.route('/perfil')
 // Ruta /productos
 router.route('/domain')
     .get(domainController.getDomain)
+    .put(domainController.updateDomain)
     .post(domainController.postDomain);
 
 // Rutas /productos/:id
-router.route('/domain/:id')
-    .get(domainController.getDomainPorId)
-    .put(domainController.updateDomain)
-    .delete(domainController.deleteDomain);
+// router.route('/domain/:id')
+//     .get(domainController.getDomainPorId)
+//     .put(domainController.updateDomain)
+//     .delete(domainController.deleteDomain);
 
 module.exports = router;
