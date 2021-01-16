@@ -50,11 +50,9 @@ $ npm test
 /api/users/register (POST)
 
 /api/perfil (GET)
-/api/domain (GET)
-/api/domain (POST)
-/api/domain/:id (GET)
-/api/domain/:id (PUT)
-/api/domain/:id (DELETE)
+/api/domain (GET) // all domains
+/api/domain (PUT) // param ?link=http://wwww.domain.com
+/api/domain (POST) // param ?link=http://wwww.domain.com
 ```
 #### Modelo User
 
