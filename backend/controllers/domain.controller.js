@@ -16,6 +16,7 @@ async function getDomain(req, res, next) {
     result = await Domain.find({})
       .skip(perPage * page - perPage)
       .limit(perPage)
+      .sort({ seen: -1 })
       .exec();
 
       countDocument = await Domain.countDocuments((err, count) => {
