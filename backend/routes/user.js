@@ -4,7 +4,7 @@ const userController = require('../controllers/user.controller');
 
 
 router.route('/register')
-    .post(userController.postRegistro);
+    .post(userController.postRegister);
 
 router.route('/login')
     .post(userController.postLogin);

@@ -2,12 +2,12 @@ const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const validateRegisterInput = require('../validation/registro');
+const validateRegisterInput = require('../validation/register');
 const validateLoginInput = require('../validation/login');
 
 const User = require('../models/User');
 
-async function postRegistro(req, res) {
+async function postRegister(req, res) {
     try {
         const { errors, isValid } = validateRegisterInput(req.body);
 
@@ -91,7 +91,7 @@ async function postLogin(req, res) {
                                 else {
                                     return res.status(200).json({
                                         message: "Bienvenido " + user.name,
-                                        jwt: `Bearer ${jwt}`
+                                        jwt: `${jwt}`
                                     })
                                 }
                             });
@@ -107,6 +107,6 @@ async function postLogin(req, res) {
 }
 
 module.exports = {
-    postRegistro,
+    postRegister,
     postLogin
 };
