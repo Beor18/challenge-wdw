@@ -4,7 +4,7 @@ const router = express.Router();
 const domainController = require('../controllers/domain.controller');
 const profileController = require('../controllers/profile.controller');
 
-router.route('/perfil')
+router.route('/profile')
     .get(profileController.getProfile);
 
 // Ruta /domain

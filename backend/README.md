@@ -49,7 +49,7 @@ $ npm test
 /api/users/login (POST)
 /api/users/register (POST)
 
-/api/perfil (GET)
+/api/profile (GET)
 /api/domain (GET) // all domains
 /api/domain (PUT) // param ?link=http://wwww.domain.com
 /api/domain (POST) // param ?link=http://wwww.domain.com

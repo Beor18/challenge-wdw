@@ -5,7 +5,7 @@ const passport = require('passport');
 const config = require('./config/db');
 const cors = require('cors');
 
-const rutasSeguras = require('./routes/rutas-seguras');
+const authRoute = require('./routes/auth-route');
 const users = require('./routes/user');
 
 const { getLogger, logHandler, terminate } = require('@jwt/utils');
@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(logHandler);
 
 app.use('/api/users', users);
-app.use('/api', passport.authenticate('jwt', { session: false }), rutasSeguras);
+app.use('/api', passport.authenticate('jwt', { session: false }), authRoute);
 
 app.disable('etag');
 app.disable('x-powered-by');
