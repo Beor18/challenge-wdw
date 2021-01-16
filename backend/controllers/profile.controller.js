@@ -4,7 +4,7 @@ const passport = require('passport');
 const { getLogger } = require('@jwt/utils')
 const log = getLogger(__dirname, __filename)
 
-async function getPerfil(req, res, next) {
+async function getProfile(req, res, next) {
     try {
         return res.status(200).json({
             id: req.user.id,
@@ -21,5 +21,5 @@ async function getPerfil(req, res, next) {
 }
 
 module.exports = {
-    getPerfil
+    getProfile
 };

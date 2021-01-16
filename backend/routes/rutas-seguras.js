@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const domainController = require('../controllers/domain.controller');
-const perfilController = require('../controllers/perfil.controller');
+const profileController = require('../controllers/profile.controller');
 
 router.route('/perfil')
-    .get(perfilController.getPerfil);
+    .get(profileController.getProfile);
 
 // Ruta /domain
 router.route('/domain')
