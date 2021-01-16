@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuthDispatch, logout, useAuthState } from "../../context";
+import { useAuthDispatch, logout, getDomain, useAuthState } from "../../context";
 
 const Dashboard = (props) => {
   const dispatch = useAuthDispatch();

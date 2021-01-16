@@ -27,6 +27,26 @@ export async function loginUser(dispatch, loginPayload) {
   }
 }
 
+export async function getDomain(dispatch, getDomainPayload) {
+  const requestOptions = {
+    method: "GET",
+    authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(getDomainPayload),
+  };
+
+  try {
+    dispatch({ type: "REQUEST_DOMAIN" });
+    let response = await fetch(`${ROOT_URL}/api/domain`, requestOptions);
+    let data = await response.json();
+    console.log('FERNANDO GET DOMAIN >>>> ', data)
+
+  } catch (error) {
+    dispatch({ type: "DOMAIN_ERROR", error: error });
+    console.log(error);
+  }
+}
+
 export async function logout(dispatch) {
   dispatch({ type: "LOGOUT" });
   localStorage.removeItem("jwt");
