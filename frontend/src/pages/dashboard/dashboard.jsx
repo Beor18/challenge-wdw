@@ -7,15 +7,16 @@ import useFetch from "../../hooks/useFetch";
 
 import Paper from "@material-ui/core/Paper";
 import NavBar from "../../components/navbar/navbar";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "10px"
+    padding: "10px",
   },
   paper: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    '& > *': {
+    display: "flex",
+    flexWrap: "wrap",
+    "& > *": {
       margin: 10,
       padding: "10px",
       width: theme.spacing(50),
@@ -57,19 +58,29 @@ const Dashboard = (props) => {
   return (
     <div>
       <div className={classes.root}>
-        <NavBar name={user.data.name} onClick={(e) => {
-          e.preventDefault()
-          handleLogout()
-        }} />
+        <NavBar
+          name={user.data.name}
+          onClick={(e) => {
+            e.preventDefault();
+            handleLogout();
+          }}
+        />
       </div>
       <div className={classes.paper}>
-      {item.map((items) => {
-        return (
-          <Paper elevation={3} key={"id-" + items._id}>
-            {items.name} - {items.link} - {items.seen}
-          </Paper>
-        );
-      })}
+        {item.map((items) => {
+          return (
+            <Paper elevation={3} key={"id-" + items._id}>
+              <Typography className={classes.title} variant="h4" noWrap>
+                {items.name}
+              </Typography>
+              <Typography className={classes.title} variant="h6" noWrap>
+                {items.link}
+              </Typography>
+              
+                Vistos: {items.seen}
+            </Paper>
+          );
+        })}
       </div>
     </div>
   );
