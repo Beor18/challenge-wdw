@@ -7,7 +7,7 @@ async function getDomain(req, res, next) {
   try {
     let result;
     let countDocument;
-    let perPage = req.query.perPage || 9;
+    let perPage = req.query.perPage || 3;
     perPage = Number(perPage);
 
     let page = req.query.page || 1;
@@ -19,37 +19,36 @@ async function getDomain(req, res, next) {
       .sort({ seen: -1 })
       .exec();
 
-      countDocument = await Domain.countDocuments((err, count) => {
-        res.status(200).json({
-          status: "Api funcionando",
-          result,
-          total: count,
-          resultados: perPage,
-        });
+    countDocument = await Domain.countDocuments((err, count) => {
+      res.status(200).json({
+        status: "Api funcionando",
+        result,
+        total: count,
+        resultados: perPage,
       });
+    });
 
-      return countDocument;
+    return countDocument;
   } catch (err) {
     res.status(400).json({
       message: "Hubo un Error",
-      message: err
-    })
+      message: err,
+    });
   }
 }
 
 async function updateDomain(req, res) {
   try {
     const { link } = req.query;
-    const findDomain = {link: link};
-    
-    await Domain.findOneAndUpdate(findDomain, { seen: contador++})
+    const findDomain = { link: link };
+
+    await Domain.findOneAndUpdate(findDomain, { seen: contador++ });
     res.status(200).json("Dominio Visto con éxito!");
   } catch (err) {
-      res.status(400).json({
-        message: "Hubo un Error",
-        error: err
-        
-      })
+    res.status(400).json({
+      message: "Hubo un Error",
+      error: err,
+    });
   }
 }
 
@@ -70,14 +69,14 @@ async function postDomain(req, res) {
       });
     } else {
       res.status(400).json({
-        message: "Falta parametro link"
+        message: "Falta parametro link",
       });
     }
   } catch (err) {
     res.status(400).json({
       message: "Hubo un error",
-      error: err
-    })
+      error: err,
+    });
   }
 }
 

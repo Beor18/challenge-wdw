@@ -4,11 +4,11 @@ const useFetch = (url, opt) => {
   const [resp, setResp] = useState({ data: {} });
 
   const fetching = useCallback(() => {
-    setTimeout(() => {
+    setInterval(() => {
       fetch(url, opt)
         .then((res) => res.json())
         .then((data) => setResp({ data }));
-    }, 500);
+    }, 1000);
   }, [url]);
 
   useEffect(() => {
