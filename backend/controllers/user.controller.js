@@ -90,7 +90,8 @@ async function postLogin(req, res) {
                                 if (err) console.error('Error en token', err);
                                 else {
                                     return res.status(200).json({
-                                        message: "Bienvenido " + user.name,
+                                        user: user.name,
+                                        avatar: user.avatar,
                                         jwt: `${jwt}`
                                     })
                                 }
