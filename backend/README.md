@@ -34,7 +34,7 @@ En modo debug:
 $ npm run debug
 ```
 
-Testear Api Rest (por ahora registro usuario):
+Testear Api Rest (por ahora registro usuario - RECOMENDADO EJECUTAR ASI SE CREA EL PRIMER USUARIO):
 
 ```sh
 $ npm run dev

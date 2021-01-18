@@ -1,6 +1,9 @@
-const ROOT_URL = "http://localhost:4000";
+import { getApiEndpoint } from "../config/app-config";
 
 export async function loginUser(dispatch, loginPayload) {
+  
+  const endpoint = getApiEndpoint();
+
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -9,7 +12,7 @@ export async function loginUser(dispatch, loginPayload) {
 
   try {
     dispatch({ type: "REQUEST_LOGIN" });
-    let response = await fetch(`${ROOT_URL}/api/users/login`, requestOptions);
+    let response = await fetch(`${endpoint}/api/users/login`, requestOptions);
     let data = await response.json();
     
     if (data.jwt) {
@@ -30,5 +33,4 @@ export async function loginUser(dispatch, loginPayload) {
 export async function logout(dispatch) {
   dispatch({ type: "LOGOUT" });
   localStorage.removeItem("jwt");
-  //localStorage.removeItem("token");
 }

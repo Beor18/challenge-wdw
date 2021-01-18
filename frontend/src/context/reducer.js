@@ -1,10 +1,8 @@
 import React, { useState, useReducer } from "react";
 
-//let user = localStorage.getItem("currentUser");
 let token = localStorage.getItem("jwt");
 
 export const initialState = {
-  //user: "" || user,
   token: "" || token,
   loading: false,
   errorEmail: null,
@@ -21,7 +19,6 @@ export const AuthReducer = (initialState, action) => {
     case "LOGIN_SUCCESS":
       return {
         ...initialState,
-        //user: action.payload.user,
         token: action.payload.jwt,
         loading: false,
       };
