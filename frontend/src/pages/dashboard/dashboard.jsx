@@ -23,6 +23,17 @@ const useStyles = makeStyles((theme) => ({
       height: theme.spacing(16),
     },
   },
+  title: {
+    fontSize: "24px",
+    padding: 5
+  },
+  url: {
+    fontSize: "20px",
+    padding: 5
+  },
+  seen: {
+    padding: 5
+  }
 }));
 
 const Dashboard = (props) => {
@@ -73,11 +84,12 @@ const Dashboard = (props) => {
               <Typography className={classes.title} variant="h4" noWrap>
                 {items.name}
               </Typography>
-              <Typography className={classes.title} variant="h6" noWrap>
+              <Typography className={classes.url} variant="h6" noWrap>
                 {items.link}
               </Typography>
-              
-                Vistos: {items.seen}
+              <Typography className={classes.seen} noWrap>
+                Visitas: {items.seen}
+              </Typography>
             </Paper>
           );
         })}
