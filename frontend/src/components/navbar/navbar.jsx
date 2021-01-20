@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
@@ -123,6 +124,11 @@ const NavBar = ({ name, onClick }) => {
       </AppBar>
     </div>
   );
+};
+
+NavBar.propTypes = {
+  name: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 export default NavBar;
