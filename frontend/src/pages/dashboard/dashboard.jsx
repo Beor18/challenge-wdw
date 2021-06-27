@@ -25,21 +25,21 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: "24px",
-    padding: 5
+    padding: 5,
   },
   url: {
     fontSize: "20px",
-    padding: 5
+    padding: 5,
   },
   seen: {
-    padding: 5
-  }
+    padding: 5,
+  },
 }));
 
 const Dashboard = (props) => {
   const classes = useStyles();
   const dispatch = useAuthDispatch();
-  const [item, setItem] = useState([]);
+  //const [item, setItem] = useState([]);
   const handleLogout = () => {
     logout(dispatch);
     props.history.push("/login");
@@ -51,20 +51,20 @@ const Dashboard = (props) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      //Authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
+    credentials: 'same-origin'
   };
 
-  const { data } = useFetch(`${endpoint}/api/domain`, requestOptions);
   const user = useFetch(`${endpoint}/api/profile`, requestOptions);
-  const newData = get(data, "result", []);
+  const mercadopago = get(user, "data.mercadopago[0]", []);
 
-  useEffect(() => {
-    setTimeout(() => {
-      const result = newData;
-      setItem(result);
-    }, 1000);
-  }, [newData]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     const result = newData;
+  //     setItem(result);
+  //   }, 1000);
+  // }, [newData]);
 
   return (
     <div>
@@ -78,21 +78,19 @@ const Dashboard = (props) => {
         />
       </div>
       <div className={classes.paper}>
-        {item.map((items) => {
-          return (
-            <Paper elevation={3} key={"id-" + items._id}>
-              <Typography className={classes.title} variant="h4" noWrap>
-                {items.name}
-              </Typography>
-              <Typography className={classes.url} variant="h6" noWrap>
-                {items.link}
-              </Typography>
-              <Typography className={classes.seen} noWrap>
-                Visitas: {items.seen}
-              </Typography>
-            </Paper>
-          );
-        })}
+        <Paper elevation={3}>
+          <Typography className={classes.title} variant="h4" noWrap>
+            Status: {mercadopago.status ? "ACTIVO" : "DESACTIVADO"}
+          </Typography>
+        </Paper>
+
+        <a
+          href={`https://auth.mercadopago.com.ar/authorization?client_id=2126285233834033&response_type=code&platform_id=mp&redirect_uri=http://localhost:4000/api/callback`}
+        >
+          {mercadopago.status
+            ? "Desenlazar cuenta mercadopago"
+            : "Enlazar cuenta mercadopago"}
+        </a>
       </div>
     </div>
   );

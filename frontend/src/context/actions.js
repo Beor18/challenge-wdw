@@ -8,6 +8,7 @@ export async function loginUser(dispatch, loginPayload) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(loginPayload),
+    credentials: 'same-origin'
   };
 
   try {

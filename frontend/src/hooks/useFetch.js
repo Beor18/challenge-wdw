@@ -4,11 +4,9 @@ const useFetch = (url, opt) => {
   const [resp, setResp] = useState({ data: {} });
 
   const fetching = useCallback(() => {
-    setInterval(() => {
-      fetch(url, opt)
-        .then((res) => res.json())
-        .then((data) => setResp({ data }));
-    }, 1000);
+    fetch(url, opt)
+      .then((res) => res.json())
+      .then((data) => setResp({ data }));
   }, [url]);
 
   useEffect(() => {
